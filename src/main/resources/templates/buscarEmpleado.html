@@ -22,12 +22,13 @@
             </select>
             <label for="valor">Valor:</label>
             <input type="text" id="valor" name="valor" required placeholder="Introduce el valor a buscar"
-                   pattern="^[\S].+[\S]$" oninvalid="setCustomValidity('Comprueba que no haya espacios innecesarios.')"/>
+                   pattern="^[^\s]+(\s+[^\s]+)*$\g"
+                   oninvalid="setCustomValidity('Comprueba que no haya espacios al inicio o al final.')"/>
             <input type="submit" value="Buscar"/>
         </form>
-        <div>
+        <h3>
             <a th:href="@{/}">Volver</a>
-        </div>
+        </h3>
     </div>
 </main>
 </body>

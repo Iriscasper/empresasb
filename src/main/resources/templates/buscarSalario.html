@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/estilos.css}">
+</head>
+<body>
+<header>
+    <h1>Búsqueda de nómina por DNI de empleado</h1>
+</header>
+<main>
+    <div class="contenido-ppal">
+        <form th:action="@{/empleados/nomina}" method="POST">
+            <label for="dni">Introduce el dni a buscar: </label>
+            <input type="text" id="dni" name="dni" required placeholder="Introduce el DNI"
+                   pattern="^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$"
+                   oninvalid="setCustomValidity('Formato: 8 números seguidos de una letra válida (12345678B)')">
+            <input type="submit" value="Buscar"/>
+        </form>
+        <table id="tabla" th:if="${empleadoBuscado} != null">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>DNI</th>
+                <th>Sueldo</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${empleadoBuscado.nombre}"></td>
+                <td th:text="${empleadoBuscado.dni}"></td>
+                <td th:text="${empleadoBuscado.sueldo}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <h2 th:unless="${empleadoBuscado} != null">No se ha encontrado ningún empleado con el dni proporcionado</h2>
+        <h3><a th:href="@{/empleados}">Volver</a></h3>
+    </div>
+</main>
+</body>
+</html>

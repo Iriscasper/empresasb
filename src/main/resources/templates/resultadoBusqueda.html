@@ -3,32 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/estilos.css}">
 </head>
 <body>
-<div class="contenido-ppal">
-    <table th:if="${empleadosBuscados.size() > 0}" class="empleados-table">
-        <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>DNI</th>
-            <th>Sexo</th>
-            <th>Años</th>
-            <th>Categoría</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="emp : ${empleadosBuscados}">
-            <td th:text="${emp.nombre}">Nombre</td>
-            <td th:text="${emp.dni}">DNI</td>
-            <td th:text="${emp.sexo}">Sexo</td>
-            <td th:text="${emp.anyos}">Años</td>
-            <td th:text="${emp.categoria}">Categoría</td>
-        </tr>
-        </tbody>
-    </table>
-    <h2 th:unless="${empleadosBuscados.size() > 0}">
-        No se han encontrado empleados.
-    </h2>
-</div>
+<header><h1>Resultados de la búsqueda</h1></header>
+<main>
+    <div class="contenido-ppal">
+        <table th:if="${empleadosBuscados.size() > 0}" class="empleados-table">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>DNI</th>
+                <th>Sexo</th>
+                <th>Años</th>
+                <th>Categoría</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="emp : ${empleadosBuscados}">
+                <td th:text="${emp.nombre}">Nombre</td>
+                <td th:text="${emp.dni}">DNI</td>
+                <td th:text="${emp.sexo}">Sexo</td>
+                <td th:text="${emp.anyos}">Años</td>
+                <td th:text="${emp.categoria}">Categoría</td>
+            </tr>
+            </tbody>
+        </table>
+        <h2 th:unless="${empleadosBuscados.size() > 0}">
+            No se han encontrado empleados.
+        </h2>
+        <h3><a th:href="@{/empleados/buscar}">Volver</a></h3>
+    </div>
+</main>
 </body>
 </html>

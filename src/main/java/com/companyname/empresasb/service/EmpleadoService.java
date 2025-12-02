@@ -80,9 +80,10 @@ public class EmpleadoService {
 
         Map<String, Object> data = new HashMap<>();
         data.put("nombre", e.getNombre());
-        data.put("dni", dni);
+        data.put("dni", e.getDni());
         data.put("sueldo", nominaOptional.map(Nomina::getSueldo).orElse(0.0));
         data.put("sueldo_calculado", new Nomina().sueldo(e));
+        System.err.println(data);
         return data;
     }
 
